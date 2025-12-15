@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$ID"
+lsb_release -i -s
