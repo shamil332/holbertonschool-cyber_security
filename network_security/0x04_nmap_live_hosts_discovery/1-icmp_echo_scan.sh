@@ -1,2 +1,2 @@
-#!/bin/bash
-nano nmap -sn -PE $1
+#!/bin/basH
+sudo nmap -sn -PE $1
