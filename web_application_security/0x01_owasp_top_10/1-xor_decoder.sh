@@ -1,9 +1,14 @@
 #!/bin/bash
+# WebSphere XOR decoder
+
 hash="$1"
 clean="${hash#\{xor\}}"
-echo "$clean" | base64 --decode 2>/dev/null | while IFS= read -r -n1 char
-do
-    byte=$(printf "%d" "'$char")
-    xored=$((byte ^ 0x5F))
-    printf "\\x%02x" "$xored"
-done | xargs printf "%b\n"
+
+python3 - <<EOF
+import base64, sys
+
+data = base64.b64decode("$clean")
+out = bytes([b ^ 0x5F for b in data])
+sys.stdout.write(out.decode())
+EOF
+
