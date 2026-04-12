@@ -42,7 +42,6 @@ with open(f"/proc/{pid}/mem", "rb+") as mem:
     # 3. Find string
     index = heap.find(search)
     if index == -1:
-        print("String not found")
         sys.exit(0)
 
     # 4. Replace (pad if needed)
@@ -52,3 +51,4 @@ with open(f"/proc/{pid}/mem", "rb+") as mem:
     mem.write(new_data)
     
     print("SUCCESS!")
+    sys.exit(0)
