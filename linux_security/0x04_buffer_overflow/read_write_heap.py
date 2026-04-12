@@ -45,12 +45,10 @@ with open(f"/proc/{pid}/mem", "rb+") as mem:
         print("String not found")
         sys.exit(0)
 
-    print(f"Found at offset: {hex(heap_start + index)}")
-
     # 4. Replace (pad if needed)
     new_data = replace.ljust(len(search), b'\x00')
 
     mem.seek(heap_start + index)
     mem.write(new_data)
-
-    print("Replacement done")
+    
+    print("SUCCESS!")
