@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -i "ufw allow" auth.log | wc -l
+grep -i "iptables -A" auth.log | awk {'print $20'} | wc -l
