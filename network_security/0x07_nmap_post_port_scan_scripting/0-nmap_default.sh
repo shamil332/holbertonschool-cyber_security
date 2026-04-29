@@ -1,3 +1,2 @@
 #!/bin/bash
-host="$1"
-nmap --script=default "$host"
+nmap --script=default "$1"
